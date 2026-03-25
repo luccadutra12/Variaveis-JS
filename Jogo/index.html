@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defesa da Palavra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Defesa da Palavra</h1>
+            <div class="info-bar">
+                <div class="info-item">
+                    <span class="label">Palavra:</span>
+                    <span class="word-display" id="wordDisplay">ESCOLA</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Pontos:</span>
+                    <span class="score" id="score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Vidas:</span>
+                    <span class="lives" id="lives">❤️ ❤️ ❤️</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Nível:</span>
+                    <span class="level" id="level">1</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-area" id="gameArea"></div>
+
+        <div id="gameOverModal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="gameOverTitle">Game Over!</h2>
+                <p id="gameOverMessage">Você perdeu todas as vidas!</p>
+                <div class="final-stats">
+                    <p>Pontuação Final: <span id="finalScore">0</span></p>
+                    <p>Nível Atingido: <span id="finalLevel">1</span></p>
+                </div>
+                <button class="restart-button" onclick="restartGame()">Jogar Novamente</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <p><strong>Como Jogar:</strong> Clique nas letras que fazem parte da palavra "ESCOLA"!</p>
+            <p>✅ Acertar: +1 ponto | ❌ Errar: -1 vida | 🔻 Deixar cair: -1 vida</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
