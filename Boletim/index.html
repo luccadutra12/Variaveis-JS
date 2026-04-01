@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Boletim Escolar</title>
+
+  <style>
+    body {
+      background: #121212;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      width: 360px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      text-align: center;
+      color: #4da3ff;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #4da3ff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #1f7ae0;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .linha {
+      padding: 8px;
+      border-bottom: 1px solid #333;
+    }
+
+    .aprovado {
+      color: #00c853;
+      font-weight: bold;
+    }
+
+    .reprovado {
+      color: #ff5252;
+      font-weight: bold;
+    }
+
+    .destaque {
+      color: #4da3ff;
+      font-weight: bold;
+    }
+
+    hr {
+      border: 1px solid #333;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>📊 Boletim Escolar</h1>
+
+    <button onclick="gerarBoletim()">Gerar Boletim</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function gerarBoletim() {
+
+      const alunos = [
+        [8, 8, 8],
+        [5, 4, 6],
+        [9, 9, 9],
+        [6, 7, 8]
+      ];
+
+      let resultadoHTML = "";
+      let totalAprovados = 0;
+
+      for (let i = 0; i < alunos.length; i++) {
+
+        const notas = alunos[i];
+        let soma = 0;
+
+        let j = 0;
+
+        while (j < notas.length) {
+          soma += notas[j];
+          j++;
+        }
+
+        const media = soma / notas.length;
+
+        let resultado = "";
+        let classe = "";
+
+        if (media >= 9) {
+          resultado = "Excelente";
+          classe = "aprovado";
+          totalAprovados++;
+        } else if (media >= 8) {
+          resultado = "Bom";
+          classe = "aprovado";
+          totalAprovados++;
+        } else if (media >= 7) {
+          resultado = "Aprovado";
+          classe = "aprovado";
+          totalAprovados++;
+        } else {
+          resultado = "Reprovado";
+          classe = "reprovado";
+        }
+
+        resultadoHTML += `
+          <div class="linha">
+            Aluno ${i + 1}: 
+            <span class="destaque">${media.toFixed(1)}</span> → 
+            <span class="${classe}">${resultado}</span>
+     </div>
+     `;
+   }
+
+   resultadoHTML += "<hr>";
+   resultadoHTML += `Total aprovados: <span class="destaque">${totalAprovados}</span>`;
+
+   document.getElementById("resultado").innerHTML = resultadoHTML;
+  }
+  </script>
+
+</body>
+</html>
